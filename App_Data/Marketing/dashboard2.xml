@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Marketing Dashboard 2" />
+  <DataSources>
+    <OLAPDataSource ComponentName="DataSource1" Name="OLAP Data Source 1" ConnectionName="Adventure Works connection" />
+  </DataSources>
+  <Items>
+    <Treemap ComponentName="treemapDashboardItem1" Name="Treemap 1" DataSource="DataSource1">
+      <DataItems>
+        <Measure DataMember="[Measures].[Gross Profit]" DefaultId="DataItem0">
+          <NumericFormat FormatType="Currency" IncludeGroupSeparator="true" />
+        </Measure>
+        <Measure DataMember="[Measures].[Sales Amount]" DefaultId="DataItem3">
+          <NumericFormat FormatType="Currency" IncludeGroupSeparator="true" />
+        </Measure>
+        <Dimension DataMember="[Product].[Subcategory].[Subcategory]" GroupChildValues="true" TopNEnabled="true" TopNMeasure="DataItem0" DefaultId="DataItem1" />
+        <Dimension DataMember="[Product].[Product].[Product]" DefaultId="DataItem2" />
+      </DataItems>
+      <Values>
+        <Value DefaultId="DataItem0" />
+        <Value DefaultId="DataItem3" />
+      </Values>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+    </Treemap>
+    <ListBox ComponentName="listBoxDashboardItem1" Name="ListBox 1" DataSource="DataSource1" ShowAllValue="false" ListBoxType="Radio">
+      <DataItems>
+        <Dimension DataMember="[Sales Channel].[Sales Channel].[Sales Channel]" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </ListBox>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="listBoxDashboardItem1" Weight="29.536571747627026" />
+      <LayoutItem DashboardItem="treemapDashboardItem1" Weight="170.46342825237295" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

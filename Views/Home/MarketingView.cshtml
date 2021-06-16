@@ -1,0 +1,13 @@
+﻿@using DevExpress.AspNetCore
+
+@{ 
+    ViewBag.Title = "Marketing"; 
+}
+
+<div id="#WebDashboard2" style="position: absolute; left: 0; right: 0; top:0; bottom:0;">
+    @(Html.DevExpress().Dashboard("WebDashboard2")
+        .ControllerName("MarketingDashboard")
+        .Width("100%")
+        .Height("100%")
+    )
+</div>

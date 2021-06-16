@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Sales Dashboard 1" />
+  <DataSources>
+    <SqlDataSource Name="SalesPerson" ComponentName="DataSource1">
+      <Connection Name="Northwind connection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="SalesPerson">
+        <Tables>
+          <Table Name="SalesPerson" />
+        </Tables>
+        <Columns>
+          <AllColumns Table="SalesPerson" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Grid ComponentName="gridDashboardItem1" Name="Grid 1" DataSource="DataSource1" DataMember="SalesPerson">
+      <DataItems>
+        <Dimension DataMember="FullName" DefaultId="DataItem0" />
+        <Measure DataMember="ExtendedPrice" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridMeasureColumn>
+          <Measure DefaultId="DataItem1" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="DataSource1" DataMember="SalesPerson">
+      <DataItems>
+        <Measure DataMember="ExtendedPrice" SummaryType="Count" DefaultId="DataItem0" />
+        <Dimension DataMember="OrderDate" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Card ComponentName="cardDashboardItem1" Name="Cards 1" DataSource="DataSource1" DataMember="SalesPerson">
+      <DataItems>
+        <Dimension DataMember="Country" DefaultId="DataItem0" />
+        <Measure DataMember="ExtendedPrice" SummaryType="Count" DefaultId="DataItem1" />
+        <Dimension DataMember="OrderDate" DateTimeGroupInterval="QuarterYear" DefaultId="DataItem2" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Card>
+        <ActualValue DefaultId="DataItem1" />
+        <AbsoluteVariationNumericFormat />
+        <PercentVariationNumericFormat />
+        <PercentOfTargetNumericFormat />
+      </Card>
+      <SparklineArgument DefaultId="DataItem2" />
+    </Card>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Orientation="Vertical">
+        <LayoutItem DashboardItem="gridDashboardItem1" />
+        <LayoutItem DashboardItem="cardDashboardItem1" />
+      </LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Marketing Dashboard 1" />
+  <DataSources>
+    <OLAPDataSource ComponentName="DataSource1" Name="OLAP Data Source 1" ConnectionName="Adventure Works connection" />
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="DataSource1">
+      <DataItems>
+        <Measure DataMember="[Measures].[Gross Profit Margin]" DefaultId="DataItem0">
+          <NumericFormat FormatType="Percent" />
+        </Measure>
+        <Dimension DataMember="[Product].[Category].[Category]" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Pie 1" DataSource="DataSource1">
+      <DataItems>
+        <Measure DataMember="[Measures].[Sales Amount]" DefaultId="DataItem0">
+          <NumericFormat FormatType="Currency" IncludeGroupSeparator="true" />
+        </Measure>
+        <Dimension DataMember="[Product].[Category].[Category]" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem0" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+      <LayoutItem DashboardItem="pieDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
