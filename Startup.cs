@@ -1,4 +1,3 @@
-using AspNetCore31Dashboard.Controllers;
 using DevExpress.AspNetCore;
 using DevExpress.DashboardAspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -24,9 +23,11 @@ namespace AspNetCore31Dashboard {
             services
                 .AddDevExpressControls()
                 .AddControllersWithViews();
-
+                
             services.AddSingleton<SalesDashboardConfigurator>();
             services.AddSingleton<MarketingDashboardConfigurator>();
+
+            DevExpress.DashboardCommon.DashboardOlapDataSource.OlapDataProvider = DevExpress.DashboardCommon.OlapDataProviderType.Xmla;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
